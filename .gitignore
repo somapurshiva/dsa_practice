@@ -1,6 +1,7 @@
 /Grokking Algorithms/.idea
 /Grokking Algorithms/venv
-/LeetCode/**/.idea
-/LeetCode/**/*.iml
-/LeetCode/**/out
-
+/LeetCode/**/**/.idea
+/LeetCode/**/**/*.iml
+/LeetCode/**/**/out
+.DS_Store
+/**/.DS_Store
