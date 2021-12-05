@@ -8,3 +8,5 @@
 /AlgoExpert/**/**/.idea
 /AlgoExpert/**/**/*.iml
 /AlgoExpert/**/**/out
+.idea
+out
