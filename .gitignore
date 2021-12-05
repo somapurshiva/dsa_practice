@@ -5,3 +5,6 @@
 /LeetCode/**/**/out
 .DS_Store
 /**/.DS_Store
+/AlgoExpert/**/**/.idea
+/AlgoExpert/**/**/*.iml
+/AlgoExpert/**/**/out
