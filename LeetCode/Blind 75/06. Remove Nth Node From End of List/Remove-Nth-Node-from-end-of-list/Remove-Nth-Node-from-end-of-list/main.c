@@ -14,31 +14,45 @@ struct ListNode {
 };
 
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
-    struct ListNode *p, *q, *r;
-    int count = 0;
-    
-    p = head;
-    q = NULL;
-    r = NULL;
-    while (p != NULL) {
-        p = p->next;
-        if (q != NULL)
-            q = q->next;
-        if (r != NULL)
-            r = r->next;
-        if (count <= n+1)
-            count++;
-        if (count == n)
-            q = head;
-        if (count == n+1)
-            r = head;
+//    struct ListNode *p, *q, *r;
+//    int count = 0;
+//
+//    p = head;
+//    q = NULL;
+//    r = NULL;
+//    while (p != NULL) {
+//        p = p->next;
+//        if (q != NULL)
+//            q = q->next;
+//        if (r != NULL)
+//            r = r->next;
+//        if (count <= n+1)
+//            count++;
+//        if (count == n)
+//            q = head;
+//        if (count == n+1)
+//            r = head;
+//    }
+//    if (q == head) {
+//        head = q->next;
+//    } else {
+//        r->next = q->next;
+//    }
+//    return head;
+    struct ListNode *dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy->next = head;
+    struct ListNode *first = dummy, *second = dummy;
+    for (int i = 0; i < n + 1; i++) {
+        first = first->next;
     }
-    if (q == head) {
-        head = q->next;
-    } else {
-        r->next = q->next;
+    while (first != NULL) {
+        first = first->next;
+        second = second->next;
     }
-    return head;
+    // At this point, we have reached the end of the list. Thus we can remove the nth element
+    second->next = second->next->next;
+    // free(dummy);
+    return dummy->next;
 }
 
 struct ListNode* getnode(void) {
