@@ -18,7 +18,8 @@ Used the property of BST to come to a situation where the two nodes p & q occur 
 We can optimize with a single for loop for both strings. Once increments count in hashtable whereas the other decrements the counts. In the end if any count in the hashtable isn't 0, it's invalid.
 #### 253. Meeting Rooms II
 Consider this as a meeting room finder and solve using priority queue which holds all meeting rooms in the order of the earliest getting free or use two separate arrays for start times and end times to check if at any given point the current end time is earlier than current start time requested.
-
+#### 22. Generate Parentheses
+Use the back-tracking approach to keep appending '(' till the time they are < n. Then, start adding ')' till they reach a num equal to no of '('s. When we form a string with length = n, start removing the last character and regenerate.
 
 ## AlgoExpert
 ### Easy
