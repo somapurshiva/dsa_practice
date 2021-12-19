@@ -3,7 +3,7 @@ public class SpacesString {
         int count = 0;
         StringBuilder bldr = new StringBuilder(s);
         for (int space : spaces) {
-            bldr.insert(space + count, " ");
+            bldr.insert(space + count, ' ');
             count++;
         }
         return bldr.toString();
