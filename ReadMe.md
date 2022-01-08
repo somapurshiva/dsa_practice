@@ -43,6 +43,10 @@ A person can attend all the meetings if there are no overlaps. Sort all the inte
 Consider this as a meeting room finder and solve using priority queue which holds all meeting rooms in the order of the earliest getting free or use two separate arrays for start times and end times to check if at any given point the current end time is earlier than current start time requested. In either approaches, we need to sort the values. In case of priority queue, store the first interval on it and start traversing from second interval. If the current interval's start time comes after the top of priority queue's end time, tha last meeting room got free and can be evicted from the PQ. further add the current interval to the PQ to show that the meeting room is booked. At the end of the loop, no. of elements remaining in the PQ show how many meeting rooms we need. 
 #### 268. Missing Number (Easy)
 XOR approach is best approach as it avoids any overflow errors related with summation of N numbers. Set a variable "missing" = array.length. Then traverse the array. For each element, XOR the element with its index and XOR that result with variable "missing" (missing ^= i ^ nums[i]). In the end, variable "missing" will hold the missing number in the array.
+#### 33. Search in Rotated Sorted Array (Medium)
+Approach 1:- Use binary search to find the rotated index (the position where arr[i] > arr[i+1]). Once found, We can check if target num is at the rotated index itself. Otherwise it will be to left or right of the rotated index. Perform normal binary search for target num on the correct sub-array once you found out the right half to look at.
+
+Approach 2:- Follow usual binary search itself. When we find mid, we have to check on which side of mid do we have the non-rotated array. If target falls in the non-rotated array, ensure to update the pointers to consider the non-rotated array section. e.g. if for a given mid, non-rotated array falls on left and target also falls on left, update `end = mid - 1` otherwise `start = mid + 1` 
 
 ### Others
 #### 7. Reverse Integer
