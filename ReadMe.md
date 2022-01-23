@@ -47,6 +47,15 @@ XOR approach is best approach as it avoids any overflow errors related with summ
 Approach 1:- Use binary search to find the rotated index (the position where arr[i] > arr[i+1]). Once found, We can check if target num is at the rotated index itself. Otherwise it will be to left or right of the rotated index. Perform normal binary search for target num on the correct sub-array once you found out the right half to look at.
 
 Approach 2:- Follow usual binary search itself. When we find mid, we have to check on which side of mid do we have the non-rotated array. If target falls in the non-rotated array, ensure to update the pointers to consider the non-rotated array section. e.g. if for a given mid, non-rotated array falls on left and target also falls on left, update `end = mid - 1` otherwise `start = mid + 1` 
+#### 76. Minimum Window Substring (Hard)
+If either of passed strings S/T are empty, return blank string. 
+Form a map of characters and their counts within T in a variable dicT. 
+Set a variable "required" whose value is equal to number of keys within dicT.
+Created a new list "filteredS" that contains relevant pairs of characters that are present in T and their positions within S.
+Declare two pointers l & r (for left and right), start traversing the filteredS list incrementing r. At each point, add the character within filteredS pointed by r into a map "windowCounts" that keeps counts of characters in current window.
+If the current processed character's count in windowCount is same as the count of the same character in dicT, increment the variable "formed".
+Now, try shortening the window by moving the left pointer l while l <= r and the variable formed = required. each time calculate the window length based on characters that l & r are pointing. If less that current window length, update the current window length. Before incrementing l, check if the removal of character pointed by l disturbs the count of this character within windowCounts wrt the count in dicT. If so, decrement the variable "formed".
+Continue doing this till we reach the end of the filteredS list.
 
 ### Others
 #### 7. Reverse Integer
