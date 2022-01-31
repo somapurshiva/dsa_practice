@@ -76,8 +76,30 @@ Approach 1 - Iterative --> Create a list of list to store results. Inside the fu
 Approach 2 - Recursive --> Create a recursive function that takes in a node and level value. If the current level value isn't present in results list, add a new list in the results list for the current passed level. Then add the current passed node for the level it is passed into the results list. Further, recursively invoke the function for left and right child by passing level + 1 as second argument.
 #### 104. Maximum Depth of Binary Tree (Easy)
 Write a recursive function which accepts a node. If the node is `null`, return 0. Otherwise, return the max value of recursive calls of left chils and right child + 1.
+#### 105. Construct Binary Tree from Preorder and Inorder Traversal(Medium)
+Preorder traversal follows `Root -> Left -> Right` i.e. we have easy access to root using preorder[0]. Also, inorder traversal follows `Left -> Root -> Right` i.e. if we know the position of `Root`, we can recursively split the entire array into two subtrees. Create a value to index map from the inorder array to get O(1) operation access to get the position of the next root of the subtree from inorder array easily. After this, recursively call a method on the preorder array elements each time passing a subset of indexes to search from the inorder array to form the left and right subtrees. 
 #### 121. Best Time to Buy and Sell Stock (Easy)
 Kadane's algorithm: Set `maxProfit = 0` and `minBuyPrice = arr[0]`. Iterate through the array. If any price is lower than current min buy price, set that as new min buy price. Calculate profit with current price by checking against the min buy price. If the current profit goes over max profit so far, update the max profit to the new value.
+#### 124. Binary Tree Maximum Path Sum (Hard)
+* Initiate max_sum as the smallest possible integer and call max_gain(node = root).
+* Implement max_gain(node) with a check to continue the old path/to start a new path:
+  * Base case : if node is null, the max gain is 0.
+  * Call max_gain recursively for the node children to compute max gain from the left and right subtrees : left_gain = max(max_gain(node.left), 0) and
+  right_gain = max(max_gain(node.right), 0).
+  * Now check to continue the old path or to start a new path. To start a new path would cost price_newpath = node.val + left_gain + right_gain. Update max_sum if it's better to start a new path.
+  * For the recursion return the max gain the node and one/zero of its subtrees could add to the current path : node.val + max(left_gain, right_gain).
+#### 128. Longest Consecutive Sequence (Medium)
+Add all the numbers to a HashSet: `numSet`. Iterate through the array for each N. If N-1 is not part of the `numSet`, we can start counting a new sequence by starting at N and checking if N+1 is available in the `numSet` then further incrementing N. At the end of the inner loop, we can check if the current streak is greater than the longest streak seen and thus update the longest streak.
+#### 133. Clone Graph (Medium)
+Use either BFS or DFS using recursion to traverse the graph. The `visited` set can be replaced with a Map that holds the original node as key and a cloned node as value. During traversal, we will add the cloned nodes for all nodes in the `visited` map. Also, during traversal we will populate the neighbor array for each node by using the clones from the same `visited` map.
+#### 139. Word Break (Medium)
+TBD
+#### 143. Reorder List (Medium)
+Step 1 -> Find middle of the list using slow and fast pointers
+
+Step 2 -> Reverse the second part of the list
+
+Step 3 -> Merge the two parts
 #### 141. Linked List Cycle (Easy)
 Keep two pointers: slow and fast. slow pointer moves one step at a time. fast pointer moves two steps at a time. If at any point, the fast and slow pointers point to the same node, we have a cycle. Otherwise if at any point fast or fast.next point to null, we don't have any cycle.
 #### 152. Maximum Product Subarray (Medium)
